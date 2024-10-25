@@ -1,0 +1,15 @@
+.register-container {
+    width: 100%;
+    max-width: 320px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.register-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}

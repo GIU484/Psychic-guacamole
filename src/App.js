@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import { useUser } from './Context/UserContext'; // Assuming useUser is your custom hook for auth
 
 function App() {
+  
+  const { user } = useUser();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
+        <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
+        <Route path="/" element={!user ? <Navigate replace to="/login" /> : <Home />} />
+        {/* Redirect any unknown routes */}
+        <Route path="*" element={<Navigate to={user ? "/" : "/login"} />} />
+      </Routes>
+    </Router>
   );
 }
 
