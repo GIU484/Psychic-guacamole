@@ -12,7 +12,7 @@ function Login() {
 
         // Your updated fetch request inside a try-catch block
         try {
-            const response = await fetch('https://yourserver.com/api/login', {
+            const response = await fetch('https://psychic-guacamole-psychic-guacamole-backend.vercel.app/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
